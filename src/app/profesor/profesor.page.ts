@@ -3,16 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RouterLink, RouterLinkWithHref } from '@angular/router';
-@Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
-  standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, RouterLinkWithHref],
-})
 
-export class HomePage {
-  
+@Component({
+  selector: 'app-profesor',
+  templateUrl: './profesor.page.html',
+  styleUrls: ['./profesor.page.scss'],
+  standalone: true,
+  imports: [IonicModule, CommonModule, FormsModule]
+})
+export class ProfesorPage {
   public alertButtons = ['Recuperar'] ;
   
   public alertInputs = [
@@ -33,8 +32,10 @@ export class HomePage {
       
       
     },
-    
+  ]
+  constructor() { }
 
-  ];
-  constructor() {}
+  ngOnInit() {
+  }
+
 }
