@@ -6,8 +6,8 @@ export class UserModel {
         public email: string,
         public birthday: Date | undefined,
         public type: string,
-        public username: string,
-        public password: string,
+        public usuario: string,
+        public contrasenna: string,
     ) {
     }
 

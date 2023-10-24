@@ -25,8 +25,8 @@ import { UserService } from '../services/userservice/user.service';
 export class LoginPage implements OnInit, OnDestroy {
 
   userLoginModal: IUserLogin = {
-    username: "",
-    password: ""
+    usuario: "",
+    contrasenna: ""
   };
   public userExiste?: UserModel;
   public userList:UserModel[]=[];
@@ -40,26 +40,27 @@ export class LoginPage implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.userLoginModalRestart();
   }
-  async setObject(user:UserModel){
+  async setObject(usuario:UserModel){
     await Preferences.set({
-      key: 'user',
-      value: JSON.stringify(user)
+      key: 'usuario',
+      value: JSON.stringify(usuario)
     });
   }
 
   async userLogin(userLoginInfo: IUserLogin) {
-    const user_id = await lastValueFrom(this._usuarioService.getLoginUser(userLoginInfo));
-    console.log(user_id);
-    if (user_id) {
+    const usuario = await lastValueFrom(this._usuarioService.getLoginUser(userLoginInfo));
+    console.log(usuario);
+    if (usuario) {
       console.log("Usuario existe...");
-      this.route.navigate(['usuario.page'], { state: { userInfo: user_id}})
+      this.route.navigate(['/usuario.page'], { state: { userInfo: usuario}})
     } else {
       //NO EXISTE
       console.log("Usuario no existe...");
+      
     }
   }
   userLoginModalRestart(): void{
-    this.userLoginModal.username = '';
-    this.userLoginModal.password = '';
+    this.userLoginModal.usuario = '';
+    this.userLoginModal.contrasenna = '';
 }
 }

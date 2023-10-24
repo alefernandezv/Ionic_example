@@ -22,19 +22,26 @@ export class UserService {
     getUserListSupaBase(): Observable<UserModel[]> {
         return this._httpclient.get<UserModel[]>(this.URL_SUPABASE+'usuarios', { headers: this.supabaseheaders, responseType: 'json' });
     }
+    getUser(usuario: string): Observable<UserModel> {
+        return this._httpclient.get<UserModel[]>(this.URL_SUPABASE + 'users?user_id=eq.' + usuario, { headers: this.supabaseheaders, responseType: 'json' }).pipe(
+            map( (userInfo) => {
+                return userInfo[0];
+            })
+        );
+    }
     getLoginUser(iUserLogin: IUserLogin): Observable<string | any> {
-      return this._httpclient.get<any>(this.URL_SUPABASE + "usuarios?usuario=eq." + iUserLogin.username + "&contrasenna=eq." + iUserLogin.password, { headers: this.supabaseheaders }).pipe(
-          map((user) => {
-              console.log(user[0]);
-              return user[0].user_id;
+      return this._httpclient.get<any>(this.URL_SUPABASE + "usuarios?usuario=eq." + iUserLogin.usuario + "&contrasenna=eq." + iUserLogin.contrasenna, { headers: this.supabaseheaders }).pipe(
+          map((usuario) => {
+              console.log(usuario[0]);
+              return usuario[0];
           }), catchError((err) => {
               console.log(err)
               return err;
           })
       );
   }
-  getUserType(user_id: string){
-    return this._httpclient.get<any>(this.URL_SUPABASE+"users_type?user=eq."+user_id+"&select=id,created_at,user(*),type(*)", { headers: this.supabaseheaders}).pipe(
+  getUserType(usuario: string){
+    return this._httpclient.get<any>(this.URL_SUPABASE+"users_type?user=eq."+usuario+"&select=id,created_at,user(*),type(*)", { headers: this.supabaseheaders}).pipe(
         map((userInfo) => {
             console.log(userInfo);
             return userInfo;

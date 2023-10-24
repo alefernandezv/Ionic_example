@@ -14,8 +14,8 @@
   <div>
     <div>
       <ion-label class="center-content">Login</ion-label>
-      <ion-input class="center-content" label="Username" [(ngModel)]="userLoginModal.username"></ion-input>
-      <ion-input class="center-content" label="Password" [(ngModel)]="userLoginModal.password"></ion-input>
+      <ion-input class="center-content" label="Username" [(ngModel)]="userLoginModal.usuario"></ion-input>
+      <ion-input class="center-content" label="Password" [(ngModel)]="userLoginModal.contrasenna"></ion-input>
     </div>
     <div>
       <!--
@@ -27,7 +27,7 @@
       <!--
         Navegación via HTML.
       -->
-      <ion-button [routerLink]="['/usuario',userLoginModal.username]">Go to Usuario with HREF</ion-button>
+      <ion-button [routerLink]="['/usuario',userLoginModal.usuario]">Go to Usuario with HREF</ion-button>
     </div>
   </div>
 </ion-content>
