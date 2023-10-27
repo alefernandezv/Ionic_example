@@ -12,26 +12,27 @@ import { UserService } from '../services/userservice/user.service';
   templateUrl: './usuario.page.html',
   styleUrls: ['./usuario.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule,RouterLinkWithHref]
 })
 export class UsuarioPage {
   public alertButtons = ['Recuperar'] ;
   
   userTypeList$!: Observable<any>;
-  user_id: string = "";
+  usuario: string = "";
+  userList: any;
 
   constructor(private router: Router,private _userService: UserService) { 
-    this.user_id = this.router.getCurrentNavigation()?.extras.state?.['userInfo'];
+    this.usuario = this.router.getCurrentNavigation()?.extras.state?.['userInfo'];
   }
 
   ngOnInit() {
-    console.log(this.user_id);
-    this.userTypeList$ = this._userService.getUserType(this.user_id);
+    console.log(this.usuario);
+    this.userTypeList$ = this._userService.getUserType(this.usuario);
   }
 
   sendPage(path: string){
     console.log(path);
-    this.router.navigate([path], { state: { userInfo: this.user_id}});
+    this.router.navigate([path], { state: { userInfo: this.usuario}});
   }
    
 }

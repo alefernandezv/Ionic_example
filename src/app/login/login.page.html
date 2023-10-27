@@ -11,23 +11,30 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Log In</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
   <div>
     <div>
       <ion-label class="center-content">Login</ion-label>
-      <ion-input class="center-content" label="Username" [(ngModel)]="userLoginModal.usuario"></ion-input>
-      <ion-input class="center-content" label="Password" [(ngModel)]="userLoginModal.contrasenna"></ion-input>
+      <ion-input class="center-content" fill="outline" shape="round" labelPlacement="floating" label="Username" [(ngModel)]="userLoginModal.usuario"></ion-input>
+      <ion-input type="password" class="center-content" style="margin-top: 20px;" fill="outline" shape="round" labelPlacement="floating" label="Password"[(ngModel)]="userLoginModal.contrasenna"></ion-input>
     </div>
     <div>
+      
       <!--
         Navigación con una función.
       -->
       <ion-button color="success" (click)="userLogin(userLoginModal)">Login</ion-button>
     </div>
-    <div>
-      <!--
-        Navegación via HTML.
-      -->
-      <ion-button [routerLink]="['/usuario',userLoginModal.usuario]">Go to Usuario with HREF</ion-button>
-    </div>
   </div>
+  </ion-card-content>
+</ion-card>
 </ion-content>
+<!--
+  Docs
+  https://ionicframework.com/docs/angular/navigation
+-->

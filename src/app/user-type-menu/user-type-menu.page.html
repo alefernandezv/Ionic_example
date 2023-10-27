@@ -1,0 +1,14 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>user-type-menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">user-type-menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-button *ngFor="let userType of (userTypeList$ | async)" (click)="sendPage(userType.type.path)">{{ userType.type.name }}</ion-button>
+</ion-content>

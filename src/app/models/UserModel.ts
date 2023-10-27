@@ -1,26 +1,30 @@
+import { Type } from "@angular/core"
+import { TypeUser } from "./Type_user"
 export class UserModel {
 
     constructor(
-        public name: string,
-        public last_name: string,
-        public email: string,
-        public birthday: Date | undefined,
-        public type: string,
+        public nombre: string,
+        public apellido: string,
+        public correo: string,
+        public edad: number,
+        public type: TypeUser,
         public usuario: string,
         public contrasenna: string,
+        public id_carrera: number,
+        public id_seccion: number,
     ) {
     }
 
     //Metodo dentro de la clase para crear usuario. EJEMPLO solamente.
     static crearUsuario(event: {
-        name: string,
-        last_name: string,
-        email: string
+        nombre: string,
+        apellido: string,
+        correo: string
     }){
         return {
-            name: event.email,
-            last_name: event.last_name,
-            email: event.email
+            name: event.nombre,
+            last_name: event.apellido,
+            email: event.correo
         }
     }
 }

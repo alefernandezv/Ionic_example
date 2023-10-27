@@ -1,10 +1,12 @@
 export interface IUser {
 
-    name: string;
-    last_name: string;
-    email: string;
-    birthday: Date | undefined;
+    nombre: string;
+    apellido: string;
+    correo: string;
+    edad: number;
     education_level: string;
-    username: string;
-    password: string;
+    usuario: string;
+    contrasenna: string;
+    id_carrera:number;
+    id_seccion: Number;
 }

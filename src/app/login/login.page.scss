@@ -4,12 +4,10 @@
     justify-content: center;
 }
 
-.example-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+.item-avatar  {     
+    width: 150% !important;  
+    height : 150% !important;  
+    max-width: 150px !important;  //any size
+    max-height: 150px !important; //any size 
 }
-.example-form-field {
-    width: 200px;
-}
+

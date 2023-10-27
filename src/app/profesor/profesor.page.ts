@@ -9,7 +9,7 @@ import { RouterLink, RouterLinkWithHref } from '@angular/router';
   templateUrl: './profesor.page.html',
   styleUrls: ['./profesor.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule,RouterLinkWithHref]
 })
 export class ProfesorPage {
   public alertButtons = ['Recuperar'] ;

@@ -19,11 +19,16 @@ export class UserService {
     supabaseheaders = new HttpHeaders()
         .set('apikey', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzZnl2eXlxaXBsdGl4eGNkZG1zIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTU2NTQyODEsImV4cCI6MjAxMTIzMDI4MX0.1QMVxxEjKiZvKfsxkyhyi4dsYp-oOgsdShkAaBb3qPk')
 
+
     getUserListSupaBase(): Observable<UserModel[]> {
         return this._httpclient.get<UserModel[]>(this.URL_SUPABASE+'usuarios', { headers: this.supabaseheaders, responseType: 'json' });
     }
+    authUser(): Observable<UserModel> {
+        return this._httpclient.get<UserModel>(this.URL_SUPABASE.concat('?usuario=eq.ctapia'), { headers: this.supabaseheaders.set('Accept', 'application/vnd.pgrst.object+json'), responseType: 'json' })
+    }
+
     getUser(usuario: string): Observable<UserModel> {
-        return this._httpclient.get<UserModel[]>(this.URL_SUPABASE + 'users?user_id=eq.' + usuario, { headers: this.supabaseheaders, responseType: 'json' }).pipe(
+        return this._httpclient.get<UserModel[]>(this.URL_SUPABASE + 'users?usuario=eq.' + usuario, { headers: this.supabaseheaders, responseType: 'json' }).pipe(
             map( (userInfo) => {
                 return userInfo[0];
             })
