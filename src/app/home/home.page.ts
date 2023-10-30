@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, RouterLinkWithHref],
+  imports: [IonicModule, CommonModule, FormsModule, RouterLinkWithHref,],
 })
 
 export class HomePage {
@@ -37,6 +37,10 @@ export class HomePage {
     
 
   ];
+  cerrarSesion(){
+    localStorage.removeItem('ingresado');
+    this.router.navigate(["/login"]);
+  }
   data:any;
   constructor(private activateRouter:ActivatedRoute,private router:Router) {
     this.activateRouter.queryParams.subscribe(parent => {

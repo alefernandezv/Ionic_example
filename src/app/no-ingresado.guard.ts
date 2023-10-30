@@ -6,7 +6,7 @@ import {NavController} from '@ionic/angular';
   providedIn: 'root'
 })
 export class NoIngresadoGuard implements CanActivate {
-  navCtrl=inject(navController)
+  navCtrl=inject(NavController)
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

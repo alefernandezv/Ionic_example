@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, catchError, map, of, throwError } from "rxjs";
+import { Observable, catchError, map, of, throwError,tap } from "rxjs";
 import { UserModel } from "src/app/models/UserModel";
 import { IUserLogin } from "src/app/models/IUserLogin";
+import { Lista } from "src/app/models/Lista";
 
 
 
@@ -53,4 +54,21 @@ export class UserService {
         })
     )
 }
+getDuocList(): Observable<Lista[]>{
+    return this._httpclient.get<Lista[]>(`${this.URL_SUPABASE}/lista/`).pipe(
+      tap((lista)=> console.log('asistencias obtenidos')),
+      catchError(this.handleError<Lista[]>('Get lista', [])) 
+    );
   }
+  private handleError<T>(operation = 'operation', result?: T){
+    return (error: any): Observable<T> => {
+      console.log(error);
+      console.log(`${operation} failed: ${error.message}`);
+      return of (result as T);
+    };
+  }
+ // addZoo(lista: Lista): Observable<any>{
+   // return this._httpclient.post<Lista>(`${this.URL_SUPABASE}/lista/`, lista, this.supabaseheaders)
+   // .pipe(catchError(this.handleError<Lista>('Add lista')))
+ // }
+}
