@@ -1,7 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <h1>Estudiante:</h1>
-    <h2>Jorge</h2>
     <ion-button id="Alerta" slot="end">Cambio Contraseña</ion-button>
     <ion-alert
       trigger="Alerta"
@@ -13,35 +12,63 @@
   
 </ion-header>
 <ion-content [fullscreen]="true">
-  <ion-content color="light">
-    <ion-list [inset]="true">
+<ion-row>
+  <ion-col>
+    <ion-card>
+      <ion-header> Duoc UC</ion-header>
       <ion-item>
-        <ion-label>Lenguaje</ion-label>
-        <ion-label slot="end">5 clases</ion-label>
-        <button></button>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Matematicas</ion-label>
-        <ion-label slot="end">4 clases</ion-label>
+        <ion-label position="floating">Seccion</ion-label>
+        <ion-input></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Ingles</ion-label>
-        <ion-label slot="end">3 clases</ion-label>
+        <ion-label position="floating">asistencia</ion-label>
+        <ion-input></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-label>Historia</ion-label>
-        <ion-label slot="end">7 clases</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>Ciencias naturales</ion-label>
-        <ion-label slot="end">3 clases</ion-label>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <ion-button expand="block"  color="success" shape="round">
+              Limpiar
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="block" color="success" shape="round">
+              Agregar asistencia
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  </ion-col>
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <ion-col>
+          <ion-card-header>
+            <ion-card-title></ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            rut: 
+            <br>
+            asistencia:
+          </ion-card-content>
+        </ion-col>
+        <ion-row>
+          <ion-col size="6"> 
+            <ion-button color="warning" expand="block"  shape="round">Editar</ion-button> 
+          </ion-col>
+          <ion-col size="6"> 
+            <ion-button  expand="block" color="danger"  shape="round">Borrar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-col>
+    
+  </ion-row>
+</ion-row>
 
 </ion-content>
-<ion-footer>
-  <ion-toolbar>
-    <ion-title>DUOC UC</ion-title>
-  </ion-toolbar>
-</ion-footer>

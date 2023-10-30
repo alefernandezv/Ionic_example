@@ -26,7 +26,7 @@ export class LoginPage implements OnInit, OnDestroy {
 
   userLoginModal: IUserLogin = {
     usuario: "",
-    contrasenna: ""
+    password: ""
   };
   public userExiste?: UserModel;
   public userList:UserModel[] = [];
@@ -53,7 +53,7 @@ export class LoginPage implements OnInit, OnDestroy {
     if (usuario) {
       console.log("Usuario existe...");
       //this.route.navigate(['/profesor'], { state: { userInfo: usuario}})
-      this.route.navigate(['/home'],  { state: { userInfo: usuario}});
+      this.route.navigate(['/home'],{ state: { userInfo: usuario}});
     } else {
       //NO EXISTE
       console.log("Usuario no existe...");
@@ -62,6 +62,6 @@ export class LoginPage implements OnInit, OnDestroy {
   }
   userLoginModalRestart(): void{
     this.userLoginModal.usuario = '';
-    this.userLoginModal.contrasenna = '';
+    this.userLoginModal.password = '';
 }
 }

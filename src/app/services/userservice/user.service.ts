@@ -35,7 +35,7 @@ export class UserService {
         );
     }
     getLoginUser(iUserLogin: IUserLogin): Observable<string | any> {
-      return this._httpclient.get<any>(this.URL_SUPABASE + "usuarios?usuario=eq." + iUserLogin.usuario + "&contrasenna=eq." + iUserLogin.contrasenna, { headers: this.supabaseheaders }).pipe(
+      return this._httpclient.get<any>(this.URL_SUPABASE + "usuarios?usuario=eq." + iUserLogin.usuario + "&password=eq." + iUserLogin.password, { headers: this.supabaseheaders }).pipe(
           map((usuario) => {
               console.log(usuario[0]);
               return usuario[0];

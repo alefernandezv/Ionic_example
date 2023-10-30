@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RouterLink, RouterLinkWithHref } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -36,5 +37,15 @@ export class HomePage {
     
 
   ];
-  constructor() {}
+  data:any;
+  constructor(private activateRouter:ActivatedRoute,private router:Router) {
+    this.activateRouter.queryParams.subscribe(parent => {
+      if (this.router.getCurrentNavigation()?.extras.state){
+        this.data = this.router.getCurrentNavigation()?.extras.state?.['usuario'];
+
+      }else{
+        this.router.navigate(['/login'])
+      }
+    });
+  }
 }

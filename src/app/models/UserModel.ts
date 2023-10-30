@@ -1,17 +1,16 @@
 import { Type } from "@angular/core"
-import { TypeUser } from "./Type_user"
+
 export class UserModel {
 
     constructor(
+        public rut: string,
         public nombre: string,
         public apellido: string,
-        public correo: string,
         public edad: number,
-        public type: TypeUser,
+        public correo: string,
         public usuario: string,
-        public contrasenna: string,
-        public id_carrera: number,
-        public id_seccion: number,
+        public password: string,
+        public superuser: boolean,
     ) {
     }
 

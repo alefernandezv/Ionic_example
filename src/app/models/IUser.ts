@@ -1,12 +1,10 @@
 export interface IUser {
-
+    rut:string;
     nombre: string;
     apellido: string;
     correo: string;
-    edad: number;
-    education_level: string;
+    edad: number;   
     usuario: string;
-    contrasenna: string;
-    id_carrera:number;
-    id_seccion: Number;
+    password: string;
+    superuser:boolean
 }
