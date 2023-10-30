@@ -48,6 +48,7 @@ export class LoginPage implements OnInit, OnDestroy {
   }
 
   async userLogin(userLoginInfo: IUserLogin) {
+    localStorage.setItem('ingresado', 'true')
     const usuario = await lastValueFrom(this._usuarioService.getLoginUser(userLoginInfo));
     console.log(usuario);
     if (usuario) {

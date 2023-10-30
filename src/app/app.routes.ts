@@ -1,9 +1,11 @@
 import { Routes } from '@angular/router';
-
+import { IngresadoGuard } from './ingresado.guard';
+import { NoIngresadoGuard } from './no-ingresado.guard';
 export const routes: Routes = [
   {
     path: 'home',
     loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
+    canActivate:[IngresadoGuard]
   },
   {
     path: '**',
@@ -12,7 +14,9 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    loadComponent: () => import('./login/login.page').then( m => m.LoginPage)
+    loadComponent: () => import('./login/login.page').then( m => m.LoginPage),
+    canActivate:[NoIngresadoGuard]
+
   },
   {
     path: 'profesor',
