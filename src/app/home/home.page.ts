@@ -45,8 +45,8 @@ export class HomePage {
   constructor(private activateRouter:ActivatedRoute,private router:Router) {
     this.activateRouter.queryParams.subscribe(parent => {
       if (this.router.getCurrentNavigation()?.extras.state){
-        this.data = this.router.getCurrentNavigation()?.extras.state?.['usuario'];
-
+        this.data = this.router.getCurrentNavigation()?.extras.state?.['userInfo'];
+        console.log(this.data)
       }else{
         this.router.navigate(['/login'])
       }

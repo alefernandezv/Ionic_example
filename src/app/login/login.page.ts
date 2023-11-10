@@ -53,7 +53,6 @@ export class LoginPage implements OnInit, OnDestroy {
     console.log(usuario);
     if (usuario) {
       console.log("Usuario existe...");
-      //this.route.navigate(['/profesor'], { state: { userInfo: usuario}})
       this.route.navigate(['/home'],{ state: { userInfo: usuario}});
     } else {
       //NO EXISTE
