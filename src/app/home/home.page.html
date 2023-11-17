@@ -45,17 +45,19 @@
       </ion-grid>
     </ion-card>
   </ion-col>
-  <ion-row>
+  <ion-row *ngFor="let data of clase">
     <ion-col>
       <ion-card>
         <ion-col>
           <ion-card-header>
-            <ion-card-title></ion-card-title>
+            <ion-card-title>{{data.correo}}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            rut: 
+            id lista:{{data.id_clase}}
             <br>
-            asistencia:
+            rut: {{data.rut}}
+            <br>
+            asistencia:{{data.asistencia}}
           </ion-card-content>
         </ion-col>
         <ion-row>

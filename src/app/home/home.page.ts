@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RouterLink, RouterLinkWithHref } from '@angular/router';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from '../services/userservice/user.service';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -43,7 +46,9 @@ export class HomePage {
   }
   type_user:string="";
   data:any;
-  constructor(private activateRouter:ActivatedRoute,private router:Router) {
+  clase:any;
+  asistencia:string="";
+  constructor(private activateRouter:ActivatedRoute,private router:Router,private service:UserService) {
     this.activateRouter.queryParams.subscribe(parent => {
       if (this.router.getCurrentNavigation()?.extras.state){
         this.data = this.router.getCurrentNavigation()?.extras.state?.['userInfo'];
@@ -53,5 +58,18 @@ export class HomePage {
         this.router.navigate(['/login'])
       }
     });
+  }
+  getDuocList(){
+    this.service.getDuocList().subscribe((data)=>{
+      console.log(data);
+      this.clase=data;
+      for(let i =0;i<=this.clase.length;i++){
+      
+      }
+    })
+  }
+
+  ionViewWillEnter(){
+    this.getDuocList();
   }
 }

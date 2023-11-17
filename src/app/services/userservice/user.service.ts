@@ -4,6 +4,7 @@ import { Observable, catchError, map, of, throwError, tap } from "rxjs";
 import { UserModel } from "src/app/models/UserModel";
 import { IUserLogin } from "src/app/models/IUserLogin";
 import { Lista } from "src/app/models/Lista";
+import { Clase } from "src/app/models/Clase";
 
 
 
@@ -54,10 +55,10 @@ export class UserService {
             })
         )
     }
-    getDuocList(): Observable<Lista[]> {
-        return this._httpclient.get<Lista[]>(`${this.URL_SUPABASE}/lista/`).pipe(
-            tap((lista) => console.log('asistencias obtenidos')),
-            catchError(this.handleError<Lista[]>('Get lista', []))
+    getDuocList(): Observable<Clase[]> {
+        return this._httpclient.get<Clase[]>(`${this.URL_SUPABASE}/clase`,{headers:this.supabaseheaders}).pipe(
+            tap((clase) => console.log('asistencias obtenidos')),
+            catchError(this.handleError<Clase[]>('Get clase', []))
         );
     }
     private handleError<T>(operation = 'operation', result?: T) {
