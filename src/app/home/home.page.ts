@@ -41,12 +41,14 @@ export class HomePage {
     localStorage.removeItem('ingresado');
     this.router.navigate(["/login"]);
   }
+  type_user:string="";
   data:any;
   constructor(private activateRouter:ActivatedRoute,private router:Router) {
     this.activateRouter.queryParams.subscribe(parent => {
       if (this.router.getCurrentNavigation()?.extras.state){
         this.data = this.router.getCurrentNavigation()?.extras.state?.['userInfo'];
         console.log(this.data)
+        this.type_user=this.data.superuser?"Profesor":"Alumno";
       }else{
         this.router.navigate(['/login'])
       }
