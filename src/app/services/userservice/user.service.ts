@@ -68,8 +68,21 @@ export class UserService {
             return of(result as T);
         };
     }
-    adduoc(lista: Lista): Observable<any> {
-        return this._httpclient.post<Lista>(`${this.URL_SUPABASE}/lista/`, lista, {headers:this.supabaseheaders})
-            .pipe(catchError(this.handleError<Lista>('Add lista')))
+    adduoc(clase: Clase): Observable<any> {
+        return this._httpclient.post<Clase>(`${this.URL_SUPABASE}/clase`, clase, {headers:this.supabaseheaders})
+            .pipe(catchError(this.handleError<Clase>('Add clase')))
     }
+    getDuocId(id: any):Observable<Clase[]>{
+        return this._httpclient.get<Clase[]>(`${this.URL_SUPABASE}/clase` + id).pipe(
+          tap((_) => console.log(`duoc fetched: ${id}`)),
+          catchError(this.handleError<Clase[]>(`Get duoc id=${id}`))
+        );
+      }
+      updateDuoc(id: any, duo: Clase):Observable<any>{
+        return this._httpclient.put(`${this.URL_SUPABASE}/clase`+ id, duo,
+          {headers:this.supabaseheaders}).pipe(
+            tap((_) => console.log(`duoc updated: ${id}`)),
+            catchError(this.handleError<Clase[]>('Update Clase'))
+          );
+      }
 }

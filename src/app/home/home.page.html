@@ -18,26 +18,26 @@
         </ion-col>
       </ion-row>
       <ion-item>
-        <ion-label position="floating">Nombre</ion-label>
-        <ion-input></ion-input>
+        <ion-label position="floating">correo</ion-label>
+        <ion-input [(ngModel)]="claSe.correo"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Seccion</ion-label>
-        <ion-input></ion-input>
+        <ion-label position="floating">rut</ion-label>
+        <ion-input [(ngModel)]="claSe.rut"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">asistencia</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="claSe.asistencia"></ion-input>
       </ion-item>
       <ion-grid>
         <ion-row>
           <ion-col size="6">
-            <ion-button expand="block"  color="success" shape="round">
+            <ion-button expand="block" (click)="limpiar()" color="success" shape="round">
               Limpiar
             </ion-button>
           </ion-col>
           <ion-col size="6">
-            <ion-button expand="block" color="success" shape="round">
+            <ion-button expand="block"  (click)="addDuoc()" color="success" shape="round">
               Agregar asistencia
             </ion-button>
           </ion-col>

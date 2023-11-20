@@ -6,6 +6,7 @@ import { RouterLink, RouterLinkWithHref } from '@angular/router';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../services/userservice/user.service';
 import { Observable } from 'rxjs';
+import { ToastController, ToastOptions } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -48,7 +49,13 @@ export class HomePage {
   data:any;
   clase:any;
   asistencia:string="";
-  constructor(private activateRouter:ActivatedRoute,private router:Router,private service:UserService) {
+  claSe:any={
+    correo:"",
+    id:null,
+    rut:"",
+    asistencia: false
+  }
+  constructor(private activateRouter:ActivatedRoute,private router:Router,private service:UserService,private toastController:ToastController) {
     this.activateRouter.queryParams.subscribe(parent => {
       if (this.router.getCurrentNavigation()?.extras.state){
         this.data = this.router.getCurrentNavigation()?.extras.state?.['userInfo'];
@@ -63,13 +70,54 @@ export class HomePage {
     this.service.getDuocList().subscribe((data)=>{
       console.log(data);
       this.clase=data;
-      for(let i =0;i<=this.clase.length;i++){
-      
+      for(let i =0;i<this.clase.length;i++){
+        console.log(this.clase)
+        this.clase[i].asistencia=this.clase[i].asistencia?"Presente":"Ausente"
       }
     })
   }
 
   ionViewWillEnter(){
     this.getDuocList();
+  }
+  addDuoc(){
+    if (this.claSe.id == "" ||this.claSe.correo == "" || this.claSe.rut == "" || this.claSe.asistencia == false) {
+      this.presentToast({
+        message: ' Error al registrar clase, debe llenar los campos ',
+        duration: 3000,
+        position: 'middle',
+        icon: 'alert-circle-outline'
+      });
+      return;
+    }else{
+      this.service.adduoc(this.claSe).subscribe({
+        next: (() => {
+          console.log("Clase creado: "+ this.claSe)
+          this.presentToast({
+            message: ' Clase creado ',
+            duration: 3000,
+            position: 'middle',
+            icon: 'alert-circle-outline'
+          });
+          this.getDuocList();
+          this.limpiar();
+        })
+      })
+    }
+  }
+  async presentToast(opts?:ToastOptions){
+    const toast= await this.toastController.create(opts);
+    toast.present();
+  }
+  getDuocId(id: any){
+    this.service.getDuocId(id).subscribe((data) => {
+      console.log(data);
+      this.claSe = data
+    })
+  }
+  limpiar(){
+    this.claSe.correo=""
+    this.claSe.rut=""
+    this.claSe.asistencia=""
   }
 }
