@@ -120,4 +120,21 @@ export class HomePage {
     this.claSe.rut=""
     this.claSe.asistencia=""
   }
+  deleteDuoc(id_clase: any){
+    this.service.deleteDuoc(id_clase).subscribe({
+      next: (() => {
+        this.presentToast({
+          message: 'duoceliminado',
+          duration: 3500,
+          position: 'middle',
+          icon: 'alert-circle-outline'
+        });
+        console.log("duoc eliminado");
+        this.getDuocList();
+      }),
+      error: (error => {
+        console.log("Error"+ error)
+      })
+    })
+  }
 }

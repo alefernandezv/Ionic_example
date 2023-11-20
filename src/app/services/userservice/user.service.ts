@@ -3,15 +3,15 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, catchError, map, of, throwError, tap } from "rxjs";
 import { UserModel } from "src/app/models/UserModel";
 import { IUserLogin } from "src/app/models/IUserLogin";
-import { Lista } from "src/app/models/Lista";
 import { Clase } from "src/app/models/Clase";
+
 
 
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
 
-    URL_SUPABASE = 'https://jsfyvyyqipltixxcddms.supabase.co/rest/v1/'
+    URL_SUPABASE = 'https://jsfyvyyqipltixxcddms.supabase.co/rest/v1'
 
 
     constructor(private _httpclient: HttpClient) {
@@ -61,13 +61,6 @@ export class UserService {
             catchError(this.handleError<Clase[]>('Get clase', []))
         );
     }
-    private handleError<T>(operation = 'operation', result?: T) {
-        return (error: any): Observable<T> => {
-            console.log(error);
-            console.log(`${operation} failed: ${error.message}`);
-            return of(result as T);
-        };
-    }
     adduoc(clase: Clase): Observable<any> {
         return this._httpclient.post<Clase>(`${this.URL_SUPABASE}/clase`, clase, {headers:this.supabaseheaders})
             .pipe(catchError(this.handleError<Clase>('Add clase')))
@@ -78,11 +71,24 @@ export class UserService {
           catchError(this.handleError<Clase[]>(`Get duoc id=${id}`))
         );
       }
-      updateDuoc(id: any, duo: Clase):Observable<any>{
-        return this._httpclient.put(`${this.URL_SUPABASE}/clase`+ id, duo,
+      updateDuoc(id: any, cla: Clase):Observable<any>{
+        return this._httpclient.put(`${this.URL_SUPABASE}/clase`+ id, cla,
           {headers:this.supabaseheaders}).pipe(
-            tap((_) => console.log(`duoc updated: ${id}`)),
+            tap((_) => console.log(`clase updated: ${id}`)),
             catchError(this.handleError<Clase[]>('Update Clase'))
           );
+      }
+      deleteDuoc(id: any): Observable<Clase[]>{
+        return this._httpclient.delete<Clase[]>(`${this.URL_SUPABASE}/clase?id_clase=eq.` + id,{headers:this.supabaseheaders}).pipe(
+          tap((_) => console.log(`duoc clase: ${id}`)),
+          catchError(this.handleError<Clase[]>(`Delete clase`))
+        )
+      }
+    private handleError<T>(operation='operation',result?:T){
+        return (error:any):Observable <T> =>{
+          console.log(error);
+          console.log(`${operation}failded:${error.message}`);
+          return of (result as T)
+        };
       }
 }
