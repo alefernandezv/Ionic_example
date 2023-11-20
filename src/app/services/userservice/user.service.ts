@@ -62,7 +62,7 @@ export class UserService {
         );
     }
     adduoc(clase: Clase): Observable<any> {
-        return this._httpclient.post<Clase>(`${this.URL_SUPABASE}/clase`, clase, {headers:this.supabaseheaders})
+        return this._httpclient.post<Clase>(`${this.URL_SUPABASE}/clase`, clase , {headers:this.supabaseheaders})
             .pipe(catchError(this.handleError<Clase>('Add clase')))
     }
     getDuocId(id: any):Observable<Clase[]>{

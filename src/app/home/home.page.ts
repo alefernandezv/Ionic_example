@@ -51,7 +51,6 @@ export class HomePage {
   asistencia:string="";
   claSe:any={
     correo:"",
-    id:null,
     rut:"",
     asistencia: false
   }
@@ -81,7 +80,7 @@ export class HomePage {
     this.getDuocList();
   }
   addDuoc(){
-    if (this.claSe.id == "" ||this.claSe.correo == "" || this.claSe.rut == "" || this.claSe.asistencia == false) {
+    if (this.claSe.correo == "" || this.claSe.rut == "" || this.claSe.asistencia == false) {
       this.presentToast({
         message: ' Error al registrar clase, debe llenar los campos ',
         duration: 3000,
