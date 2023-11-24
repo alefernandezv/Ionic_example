@@ -34,7 +34,6 @@ export class LoginPage implements OnInit, OnDestroy {
   constructor(private route: Router,private _usuarioService: UserService) { }
 
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
   }
   
   ngOnInit(): void {

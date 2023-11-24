@@ -11,7 +11,7 @@ import { Clase } from "src/app/models/Clase";
 @Injectable({ providedIn: 'root' })
 export class UserService {
 
-    URL_SUPABASE = 'https://jsfyvyyqipltixxcddms.supabase.co/rest/v1'
+    URL_SUPABASE = 'https://jsfyvyyqipltixxcddms.supabase.co/rest/v1/'
 
 
     constructor(private _httpclient: HttpClient) {
@@ -56,30 +56,30 @@ export class UserService {
         )
     }
     getDuocList(): Observable<Clase[]> {
-        return this._httpclient.get<Clase[]>(`${this.URL_SUPABASE}/clase`,{headers:this.supabaseheaders}).pipe(
+        return this._httpclient.get<Clase[]>(this.URL_SUPABASE+"clase",{headers:this.supabaseheaders}).pipe(
             tap((clase) => console.log('asistencias obtenidos')),
             catchError(this.handleError<Clase[]>('Get clase', []))
         );
     }
     adduoc(clase: Clase): Observable<any> {
-        return this._httpclient.post<Clase>(`${this.URL_SUPABASE}/clase`, clase , {headers:this.supabaseheaders})
+        return this._httpclient.post<Clase>(this.URL_SUPABASE+"clase", clase , {headers:this.supabaseheaders})
             .pipe(catchError(this.handleError<Clase>('Add clase')))
     }
     getDuocId(id: any):Observable<Clase[]>{
-        return this._httpclient.get<Clase[]>(`${this.URL_SUPABASE}/clase` + id).pipe(
+        return this._httpclient.get<Clase[]>(this.URL_SUPABASE+"clase" + id).pipe(
           tap((_) => console.log(`duoc fetched: ${id}`)),
           catchError(this.handleError<Clase[]>(`Get duoc id=${id}`))
         );
       }
       updateDuoc(id: any, cla: Clase):Observable<any>{
-        return this._httpclient.put(`${this.URL_SUPABASE}/clase`+ id, cla,
+        return this._httpclient.put(this.URL_SUPABASE+"clase"+ id, cla,
           {headers:this.supabaseheaders}).pipe(
             tap((_) => console.log(`clase updated: ${id}`)),
             catchError(this.handleError<Clase[]>('Update Clase'))
           );
       }
       deleteDuoc(id: any): Observable<Clase[]>{
-        return this._httpclient.delete<Clase[]>(`${this.URL_SUPABASE}/clase?id_clase=eq.` + id,{headers:this.supabaseheaders}).pipe(
+        return this._httpclient.delete<Clase[]>(`${this.URL_SUPABASE}clase?id_clase=eq.` + id,{headers:this.supabaseheaders}).pipe(
           tap((_) => console.log(`duoc clase: ${id}`)),
           catchError(this.handleError<Clase[]>(`Delete clase`))
         )
