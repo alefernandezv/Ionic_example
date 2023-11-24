@@ -29,7 +29,11 @@ export const routes: Routes = [
   {
     path: 'user-type-menu',
     loadComponent: () => import('./user-type-menu/user-type-menu.page').then( m => m.UserTypeMenuPage)
+  },  {
+    path: 'scan-qr',
+    loadComponent: () => import('./scan-qr/scan-qr.page').then( m => m.ScanQrPage)
   },
+
 
 
 ];
