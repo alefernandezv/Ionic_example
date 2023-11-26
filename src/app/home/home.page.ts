@@ -119,6 +119,9 @@ export class HomePage {
     this.claSe.rut=""
     this.claSe.asistencia=""
   }
+  nextpage() {
+    this.router.navigate(['/scan-qr']);
+  }
   deleteDuoc(id_clase: any){
     this.service.deleteDuoc(id_clase).subscribe({
       next: (() => {
