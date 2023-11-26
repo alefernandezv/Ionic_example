@@ -8,8 +8,8 @@ export const routes: Routes = [
     canActivate:[IngresadoGuard]
   },
   {
-    path: '',
-    redirectTo: '',
+    path: '*',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
   {
@@ -35,6 +35,12 @@ export const routes: Routes = [
     loadComponent: () => import('./scan-qr/scan-qr.page').then( m => m.ScanQrPage),
     canActivate:[IngresadoGuard]
   },
+  {
+    path: 'edit-asistencia',
+    loadComponent: () => import('./edit-asistencia/edit-asistencia.page').then( m => m.EditAsistenciaPage),
+    canActivate:[IngresadoGuard]
+  },
+
 
 
 

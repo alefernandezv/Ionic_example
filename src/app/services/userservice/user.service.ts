@@ -66,12 +66,12 @@ export class UserService {
             .pipe(catchError(this.handleError<Clase>('Add clase')))
     }
     getDuocId(id: any):Observable<Clase[]>{
-        return this._httpclient.get<Clase[]>(this.URL_SUPABASE+"clase" + id).pipe(
+        return this._httpclient.get<Clase[]>(`${this.URL_SUPABASE}clase?id_clase=eq.` + id,{headers:this.supabaseheaders}).pipe(
           tap((_) => console.log(`duoc fetched: ${id}`)),
           catchError(this.handleError<Clase[]>(`Get duoc id=${id}`))
         );
       }
-      updateDuoc(id: any, cla: Clase):Observable<any>{
+      updateClase(id: any, cla: Clase):Observable<any>{
         return this._httpclient.put(this.URL_SUPABASE+"clase"+ id, cla,
           {headers:this.supabaseheaders}).pipe(
             tap((_) => console.log(`clase updated: ${id}`)),

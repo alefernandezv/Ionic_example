@@ -108,8 +108,8 @@ export class HomePage {
     const toast= await this.toastController.create(opts);
     toast.present();
   }
-  getDuocId(id: any){
-    this.service.getDuocId(id).subscribe((data) => {
+  getDuocId(id_clase: any){
+    this.service.getDuocId(id_clase).subscribe((data) => {
       console.log(data);
       this.claSe = data
     })
