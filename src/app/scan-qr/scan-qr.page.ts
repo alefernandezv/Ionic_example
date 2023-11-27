@@ -6,6 +6,7 @@ import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../services/userservice/user.service';
 import { ToastController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-scan-qr',
@@ -28,7 +29,7 @@ export class ScanQrPage implements OnInit {
     asistencia: false
   }
 
-  constructor(private activateRouter:ActivatedRoute,private router:Router,private service:UserService,private toastController:ToastController) {
+  constructor( private alertController: AlertController ,private activateRouter:ActivatedRoute,private router:Router,private service:UserService,private toastController:ToastController) {
     this.activateRouter.queryParams.subscribe(parent => {
       if (this.router.getCurrentNavigation()?.extras.state){
         this.data = this.router.getCurrentNavigation()?.extras.state?.['userInfo'];
@@ -65,7 +66,7 @@ export class ScanQrPage implements OnInit {
   }
 
   async presentAlert(): Promise<void> {
-    const alert = await this.toastController.create({
+    const alert = await this.alertController.create({
       header: 'Permission denied',
       message: 'Please grant camera permission to use the barcode scanner.',
       buttons: ['OK'],
@@ -73,3 +74,4 @@ export class ScanQrPage implements OnInit {
     await alert.present();
   }
 }
+
