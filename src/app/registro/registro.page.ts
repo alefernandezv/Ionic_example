@@ -33,7 +33,7 @@ export class RegistroPage implements OnInit {
     superuser:false
   }
   addUsuario(){
-    if (this.claSe.rut == "" ||this.claSe.nombre == "" ||this.claSe.apellido == "" ||this.claSe.edad == "" ||this.claSe.correo == "" || this.claSe.usuario == "" || this.claSe.password == ""||this.claSe.superuser == "false" ) {
+    if (this.claSe.rut == "" ||this.claSe.nombre == "" ||this.claSe.apellido == "" ||this.claSe.edad == "" ||this.claSe.correo == "" || this.claSe.usuario == "" || this.claSe.password == ""||this.claSe.superuser == "" ) {
       this.presentToast({
         message: ' Error al registrar clase, debe llenar los campos ',
         duration: 3000,
