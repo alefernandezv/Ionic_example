@@ -63,4 +63,7 @@ export class LoginPage implements OnInit, OnDestroy {
     this.userLoginModal.usuario = '';
     this.userLoginModal.password = '';
 }
+nextpage() {
+  this.route.navigate(['/registro']);
+}
 }

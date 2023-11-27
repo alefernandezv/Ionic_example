@@ -39,7 +39,11 @@ export const routes: Routes = [
     path: 'edit-asistencia',
     loadComponent: () => import('./edit-asistencia/edit-asistencia.page').then( m => m.EditAsistenciaPage),
     canActivate:[IngresadoGuard]
+  },  {
+    path: 'registro',
+    loadComponent: () => import('./registro/registro.page').then( m => m.RegistroPage)
   },
+
 
 
 

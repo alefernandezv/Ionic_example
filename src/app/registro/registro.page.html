@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-col>
+    <ion-card>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <img src="../../../assets/img/DUOC.png" alt="logo_empresa">
+        </ion-col>
+      </ion-row>
+      <ion-item>
+        <ion-label position="floating">Rut</ion-label>
+        <ion-input [(ngModel)]="claSe.rut"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input [(ngModel)]="claSe.nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Apellido</ion-label>
+        <ion-input [(ngModel)]="claSe.apellido"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Edad</ion-label>
+        <ion-input [(ngModel)]="claSe.edad"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Correo</ion-label>
+        <ion-input [(ngModel)]="claSe.correo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Usuario</ion-label>
+        <ion-input [(ngModel)]="claSe.usuario"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input [(ngModel)]="claSe.password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Superuser</ion-label>
+        <ion-input [(ngModel)]="claSe.superuser"></ion-input>
+      </ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <ion-button expand="block" (click)="limpiar()" color="success" shape="round">
+              Limpiar
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="block"  (click)="addUsuario()" color="success" shape="round">
+              Agregar usuario
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-button (click)="nextpage()" color="success" type="button" expand="block" shape="round"> Volver Login</ion-button>
+    </ion-card>
+  </ion-col>
+</ion-content>

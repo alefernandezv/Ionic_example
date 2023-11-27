@@ -91,4 +91,8 @@ export class UserService {
           return of (result as T)
         };
       }
+      addUsuario(user: UserModel): Observable<any> {
+        return this._httpclient.post<UserModel>(this.URL_SUPABASE+"usuarios", user , {headers:this.supabaseheaders})
+            .pipe(catchError(this.handleError<UserModel>('Add usuario')))
+}
 }

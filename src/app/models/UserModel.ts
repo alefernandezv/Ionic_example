@@ -10,7 +10,7 @@ export class UserModel {
         public correo: string,
         public usuario: string,
         public password: string,
-        public superuser: boolean,
+        public superuser: boolean
     ) {
     }
 
