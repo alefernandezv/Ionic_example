@@ -8,7 +8,7 @@ export const routes: Routes = [
     canActivate:[IngresadoGuard]
   },
   {
-    path: '*',
+    path: '',
     redirectTo: 'login',
     pathMatch: 'full',
   },
